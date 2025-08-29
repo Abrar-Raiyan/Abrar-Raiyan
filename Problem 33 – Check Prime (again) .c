@@ -1,21 +1,13 @@
 #include <stdio.h>
-#include <math.h>
 int main() {
-    int n, temp, sum = 0, rem, digits = 0;
+    int n, flag = 1;
     printf("Enter a number: ");
     scanf("%d", &n);
-    temp = n;
-    while(temp != 0) {
-        digits++;
-        temp /= 10;
+    if(n <= 1) flag = 0;
+    for(int i = 2; i <= n/2; i++) {
+        if(n % i == 0) { flag = 0; break; }
     }
-    temp = n;
-    while(temp != 0) {
-        rem = temp % 10;
-        sum += pow(rem, digits);
-        temp /= 10;
-    }
-    if(sum == n) printf("%d is Armstrong Number\n", n);
-    else printf("%d is Not Armstrong Number\n", n);
+    if(flag) printf("%d is Prime\n", n);
+    else printf("%d is Not Prime\n", n);
     return 0;
 }
